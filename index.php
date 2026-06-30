@@ -24,3 +24,10 @@
             "listeProduits" => []
         ]
     ];
+
+    // 2 Afficher les categorie qui n'ont pas de produits
+    for($index = 0; $index < count($categories); $index++){
+        if(count($categories[$index]["listeProduits"]) == 0){
+            echo $categories[$index]["nom"]."\n";
+        }
+    }

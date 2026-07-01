@@ -25,6 +25,7 @@
         ]
     ];
 
+    // 2
     function affichageCategorieSansProduit(array $categories):void{
         foreach ($categories as  $categorie ) {
             if (empty($categorie["produits"])) {
@@ -33,3 +34,16 @@
         }
     }
     affichageCategorieSansProduit($categories);
+
+    // 3
+    function saisieChaine(string $message): string {
+        return readline($message);  
+    }
+
+     function champObligatoire(string $value,string $message): bool{
+    if (empty($value)) {
+        echo $message."\n";
+        return  false;
+    }
+        return true;
+    }

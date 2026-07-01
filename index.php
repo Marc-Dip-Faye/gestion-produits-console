@@ -71,3 +71,28 @@
         "code" => $code,
         "listeProduits" => []
     ];
+
+
+    // Ajouter un produit à un catégorie
+    // Rechercher une categorie à partir de son code
+
+    $categorieExiste = false;
+    $code = readline("Saisir le code : ");
+    for($index = 0; $index < count($categories); $index++){
+        if($code == $categories[$index]["code"]){
+            $categorieExiste = true;
+            break;
+        }
+    }
+
+    if($categorieExiste){
+        $listeProduit = [
+            "nom" => readline("saisir le nom du produit à ajouter : "),
+            "reference" => readline("saisir la reference : "),
+            "prix" => (int)readline("saisir le prix : "),
+            "quantite" => (int)readline("saisir la quantité : ")
+        ];
+        $categories[$index]["produits"][] = $listeProduit;
+    }else{
+        echo " désolé , la categorie n'existe pas...\n";
+    }

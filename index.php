@@ -96,3 +96,58 @@
     }else{
         echo " désolé , la categorie n'existe pas...\n";
     }
+
+    // 5 Ajouter une catégorie en lui affectant des produits
+
+    do{
+        $codeValide = true;
+        $code = readline("Saisir le code : ");
+        if(empty($code) == false){
+            for($index = 0; $index < count($categories); $index++){
+                if($categories[$index]["code"] == $code){
+                    $codeValide = false;
+                    echo "Ce code existe déjà \n";
+                }
+            }
+        }else{
+            $codeValide = false;
+            echo "Ce champ est obligatoire !!\n";
+        }
+    }while(!$codeValide);
+   
+    do{
+        $nomValide = true;
+        $nom = readline("Saisir le nom : ");
+        if(empty($nom) == false){
+            for($index = 0; $index < count($categories); $index++){
+                if($categories[$index]["nom"] == $nom){
+                    $nomValide = false;
+                    echo "Ce nom existe déjà \n";
+                }
+            }
+        }else{
+            $nomValide = false;
+            echo "Ce champ est obligatoire !!\n";
+        }
+    }while(!$nomValide);
+
+    $produits = [];
+    do {
+    $produit = [
+            "nom" => readline("saisir le nom : "),
+            "reference" => readline("saisir la reference : "),
+            "prix" => (int)readline("saisir le prix : "),
+            "quantite" => (int)readline("saisir la quantité : ")
+            ];
+    $produits[]= $produit;
+    $choix = strtolower(readline(" voulez vous continuer  oui/non "));
+        
+    } while($choix === "oui");
+
+    $categorie = [
+        "code" => $code,
+        "nom" => $nom,
+        "produits" =>  $produits 
+    ];
+
+    $categories[] = $categorie;
